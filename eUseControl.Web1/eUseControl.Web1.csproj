@@ -221,11 +221,15 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
+    <Content Include="Content\vendor\css\bootstrap.min.css" />
+    <Content Include="Content\vendor\css\hotdeal.png" />
     <Content Include="Content\vendor\css\nouislider.min.css" />
     <Content Include="Content\vendor\css\registration.css" />
     <Content Include="Content\vendor\css\slick-theme.css" />
     <Content Include="Content\vendor\css\slick.css" />
     <Content Include="Content\vendor\css\style.css" />
+    <Content Include="Content\vendor\js\bootstrap.min.js" />
+    <Content Include="Content\vendor\js\jquery.min.js" />
     <Content Include="Content\vendor\js\jquery.zoom.min.js" />
     <Content Include="Content\vendor\js\main.js" />
     <Content Include="Content\vendor\js\nouislider.min.js" />
