@@ -13,5 +13,15 @@ namespace eUseControl.Web1.Controllers
         {
             return View();
         }
+
+        public ActionResult policy()
+        {
+            return View();
+        }
+
+        public ActionResult accessories()
+        {
+            return View();
+        }
     }
 }

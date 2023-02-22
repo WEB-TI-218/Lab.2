@@ -17,7 +17,23 @@ namespace eUseControl.Web1
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                
+
             );
+
+            routes.MapRoute(
+               name: "policy",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "policy", id = UrlParameter.Optional }
+               );
+
+            routes.MapRoute(
+               name: "accessories",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "accessories", id = UrlParameter.Optional }
+
+
+           );
         }
     }
 }
