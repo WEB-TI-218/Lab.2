@@ -121,6 +121,8 @@
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\slick.svg" />
     <Content Include="Content\img\actpriema.png" />
     <Content Include="Content\img\covrik.png" />
     <Content Include="Content\img\covrik1.png" />
@@ -222,7 +224,7 @@
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="Content\vendor\css\bootstrap.min.css" />
-    <Content Include="Content\vendor\css\hotdeal.png" />
+    <Content Include="Content\vendor\css\font-awesome.min.css" />
     <Content Include="Content\vendor\css\nouislider.min.css" />
     <Content Include="Content\vendor\css\registration.css" />
     <Content Include="Content\vendor\css\slick-theme.css" />
@@ -277,6 +279,14 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\slick.eot" />
+    <Content Include="Content\fonts\slick.ttf" />
+    <Content Include="Content\fonts\slick.woff" />
     <None Include="Scripts\jquery-3.6.3.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.3.js" />
     <Content Include="Scripts\jquery-3.6.3.min.js" />
@@ -289,6 +299,7 @@
     <Content Include="Scripts\jquery-ui-1.13.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Views\Home\checkout.cshtml" />
     <None Include="Views\Home\accessories.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -315,6 +326,10 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_LayoutNoHeader.cshtml" />
     <Content Include="Views\Home\policy.cshtml" />
+    <Content Include="Views\Home\registration.cshtml" />
+    <Content Include="Views\Shared\_LayoutReg.cshtml" />
+    <Content Include="Views\Shared\_Reg.cshtml" />
+    <Content Include="Views\Home\otzivi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

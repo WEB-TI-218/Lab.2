@@ -34,6 +34,30 @@ namespace eUseControl.Web1
 
 
            );
+
+            routes.MapRoute(
+               name: "registration",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "registration", id = UrlParameter.Optional }
+
+
+           );
+
+            routes.MapRoute(
+               name: "checkout",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "checkout", id = UrlParameter.Optional }
+
+
+           );
+
+            routes.MapRoute(
+               name: "otzivi",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "otzivi", id = UrlParameter.Optional }
+
+
+           );
         }
     }
 }

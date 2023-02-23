@@ -1,0 +1,179 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">Адрес счета</h3>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="first-name" placeholder="Фамилия">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="last-name" placeholder="Имя">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="address" placeholder="Адресс">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="city" placeholder="Город">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="country" placeholder="Страна">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="zip-code" placeholder="ZIP Код">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="tel" name="tel" placeholder="Телефон">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-checkbox">
+                            <input type="checkbox" id="create-account">
+                            <label for="create-account">
+                                <span></span>
+                                Создать аккаунт?
+                            </label>
+                            <div class="caption">
+                                <p>Если вы еще не зарегистрировались, создайте новый аккаунт.</p>
+                                <input class="input" type="password" name="password" placeholder="Введите пароль">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Billing Details -->
+                <!-- Shiping Details -->
+                <div class="shiping-details">
+                    <div class="section-title">
+                        <h3 class="title">Адрес доставки</h3>
+                    </div>
+                    <div class="input-checkbox">
+                        <input type="checkbox" id="shiping-address">
+                        <label for="shiping-address">
+                            <span></span>
+                            Отправить на другой адресс?
+                        </label>
+                        <div class="caption">
+                            <div class="form-group">
+                                <input class="input" type="text" name="first-name" placeholder="Фамилия">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="text" name="last-name" placeholder="Имя">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="text" name="address" placeholder="Адресс">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="text" name="city" placeholder="Город">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="text" name="country" placeholder="Страна">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="text" name="zip-code" placeholder="ZIP Код">
+                            </div>
+                            <div class="form-group">
+                                <input class="input" type="tel" name="tel" placeholder="Телефон">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Shiping Details -->
+                <!-- Order notes -->
+                <div class="order-notes">
+                    <textarea class="input" placeholder="Напишите заметку к заказу..."></textarea>
+                </div>
+                <!-- /Order notes -->
+            </div>
+
+            <!-- Order Details -->
+            <div class="col-md-5 order-details">
+                <div class="section-title text-center">
+                    <h3 class="title">Ваш заказ</h3>
+                </div>
+                <div class="order-summary">
+                    <div class="order-col">
+                        <div><strong>ПРОДУКТ</strong></div>
+                        <div><strong>ВСЕГО</strong></div>
+                    </div>
+                    <div class="order-products">
+                        <div class="order-col">
+                            <div>1 day x Toyota Prios</div>
+                            <div>980.00 MLD</div>
+                        </div>
+                        <div class="order-col">
+                            <div>2 days x Nissan Micro</div>
+                            <div>980.00 MLD</div>
+                        </div>
+                    </div>
+                    <div class="order-col">
+                        <div>Доставка</div>
+                        <div><strong>БЕСПЛАТНО</strong></div>
+                    </div>
+                    <div class="order-col">
+                        <div><strong>Всего</strong></div>
+                        <div><strong class="order-total">2940 MDL</strong></div>
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-1">
+                        <label for="payment-1">
+                            <span></span>
+                            Оплата картой банка
+                        </label>
+                        <div class="caption">
+                            <p>Выберите, если хотите оплатить картой</p>
+                        </div>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-2">
+                        <label for="payment-2">
+                            <span></span>
+                            Оплата чеком
+                        </label>
+                        <div class="caption">
+                            <p>Выберите, если хотите оплатить чеком</p>
+                        </div>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-3">
+                        <label for="payment-3">
+                            <span></span>
+                            Paypal System
+                        </label>
+                        <div class="caption">
+                            <p>Выберите, если хотите оплатить с помощью сервиса Paypal</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-checkbox">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">
+                        <span></span>
+                        Я прочитал и ознакомился с <a href="@Url.Action("policy","Home")">правилами пользования</a>
+                    </label>
+                </div>
+                <a href="#" class="primary-btn order-submit">Сохранить заказ</a>
+            </div>
+            <!-- /Order Details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->

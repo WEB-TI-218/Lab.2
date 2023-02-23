@@ -10,22 +10,23 @@ namespace eUseControl.Web1.App_Start
     {
         public static void RegisterBundles(BundleCollection bundles) 
         {
+
+            //CSS CSS CSS 
             //Bootstrap
             bundles.Add(new StyleBundle("~/bundles/bootstrap/css").Include(
                 "~/Content/vendor/css/bootstrap.min.css", new CssRewriteUrlTransform()));
-
-            //Bootstrap 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap/js").Include(
-                "~/Scpripts/vendor/js/bootstrap.min.js"));
-
             
             //Font Awesome
             bundles.Add(new StyleBundle("~/bundles/font-awesome/css").Include(
-                "~/Content/font-awesome.min.css", new CssRewriteUrlTransform()));
+                "~/Content/vendor/css/font-awesome.min.css", new CssRewriteUrlTransform()));
 
             //Slick
             bundles.Add(new StyleBundle("~/bundles/slick/css").Include(
                 "~/Content/vendor/css/slick.css", new CssRewriteUrlTransform()));
+
+            //Registration
+            bundles.Add(new StyleBundle("~/bundles/registration/css").Include(
+                "~/Content/vendor/css/registration.css", new CssRewriteUrlTransform()));
 
             //Slick theme
             bundles.Add(new StyleBundle("~/bundles/slicktheme/css").Include(
@@ -38,6 +39,14 @@ namespace eUseControl.Web1.App_Start
             //MainStyle
             bundles.Add(new StyleBundle("~/bundles/mainstyle/css").Include(
                "~/Content/vendor/css/style.css", new CssRewriteUrlTransform()));
+
+
+
+            //JS JS JS
+
+            //Bootstrap 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap/js").Include(
+                "~/Content/vendor/js/bootstrap.min.js"));
 
             //jquery 
             bundles.Add(new ScriptBundle("~/bundles/jquery/js").Include(
@@ -58,8 +67,6 @@ namespace eUseControl.Web1.App_Start
             //main
             bundles.Add(new ScriptBundle("~/bundles/mainscript/js").Include(
                 "~/Content/vendor/js/main.js"));
-
-
 
         }
 

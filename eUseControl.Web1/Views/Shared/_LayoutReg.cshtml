@@ -1,0 +1,28 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>GLOBAL AUTO | Авторизироваться</title>
+
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:600'>
+
+
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/slick/css")
+    @Styles.Render("~/bundles/slicktheme/css")
+    @Styles.Render("~/bundles/registration/css")
+    @Styles.Render("~/bundles/nouslider/css")
+    @Styles.Render("~/bundles/font-awesome/css")
+    @Styles.Render("~/bundles/mainstyle/css")
+
+
+
+</head>
+
+<body>
+    @Html.Partial("_Reg")
+    @RenderBody()
+</body>
+</html>

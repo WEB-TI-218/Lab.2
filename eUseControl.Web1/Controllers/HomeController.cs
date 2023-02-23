@@ -18,10 +18,26 @@ namespace eUseControl.Web1.Controllers
         {
             return View();
         }
+        public ActionResult registration()
+        {
+            return View();
+        }
 
         public ActionResult accessories()
         {
             return View();
         }
+
+        public ActionResult checkout()
+        {
+            return View();
+        }
+
+        public ActionResult otzivi()
+        {
+            return View();
+        }
+
+
     }
 }
