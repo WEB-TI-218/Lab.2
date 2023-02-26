@@ -38,6 +38,29 @@ namespace eUseControl.Web1.Controllers
             return View();
         }
 
+        public ActionResult predproduct()
+        {
+            return View();
+        }
 
+        public ActionResult product1()
+        {
+            return View();
+        }
+
+        public ActionResult product2()
+        {
+            return View();
+        }
+       
+        public ActionResult product3()
+        {
+            return View();
+        }
+
+        public ActionResult product4()
+        {
+            return View();
+        }
     }
 }
