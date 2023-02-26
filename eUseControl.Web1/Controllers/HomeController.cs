@@ -62,5 +62,14 @@ namespace eUseControl.Web1.Controllers
         {
             return View();
         }
+        public ActionResult Store()
+        {
+            return View();
+        }
+
+        public ActionResult HotProduct()
+        {
+            return View();
+        }
     }
 }
