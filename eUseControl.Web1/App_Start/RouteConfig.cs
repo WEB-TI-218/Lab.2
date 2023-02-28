@@ -58,6 +58,63 @@ namespace eUseControl.Web1
 
 
            );
+
+
+            routes.MapRoute(
+              name: "predproduct",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Home", action = "predproduct", id = UrlParameter.Optional }
+
+
+          );
+
+            routes.MapRoute(
+            name: "product1",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "product1", id = UrlParameter.Optional }
+
+
+        );
+
+            routes.MapRoute(
+            name: "product2",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "product2", id = UrlParameter.Optional }
+
+
+        );
+
+            routes.MapRoute(
+            name: "product3",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "product3", id = UrlParameter.Optional }
+
+
+        );
+
+            routes.MapRoute(
+            name: "product4",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Home", action = "product4", id = UrlParameter.Optional }
+
+
+        );
+
+            routes.MapRoute(
+              name: "store",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Home", action = "store", id = UrlParameter.Optional }
+
+
+          );
+
+            routes.MapRoute(
+              name: "HotProduct",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Home", action = "HotProduct", id = UrlParameter.Optional }
+
+
+          );
         }
     }
 }
