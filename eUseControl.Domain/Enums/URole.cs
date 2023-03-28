@@ -6,14 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eUseControl.BusinessLogic
+namespace eUseControl.Domain.Entities.Enum
 {
-    public class BussinesLogic
+    public enum URole
     {
-        public ISession GetSessionBL()
-        {
-
-            return new SessionBL();
-        }
+        UNAUTHORIZED,
+        USER,
+        ADMINISTRATOR
     }
 }
