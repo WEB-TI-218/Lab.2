@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using eUseControl.Web1.Models;
+using System.Web.UI.WebControls;
 
 namespace eUseControl.Web1.Controllers
 {
@@ -19,7 +20,32 @@ namespace eUseControl.Web1.Controllers
             var bl = new BussinesLogic();
             _session = bl.GetSessionBL();
         }
-        public ActionResult Index(UserLogin login)
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return RedirectToAction("SignIn", "Login");
+        }
+
+        [HttpGet]
+        public ActionResult SignIn()
+        {
+            UserData user = new UserData();
+            ULoginData data = new ULoginData
+            {
+                Credential = "Login123",
+                Password = "qwerty",
+                LoginIP = Request.UserHostAddress,
+                LoginDateTime = DateTime.Now
+            };
+
+            var userLogin = _session.UserLogin(data);
+            return View(user);
+
+        }
+
+        [HttpPost]
+        public ActionResult SignIn(UserLogin login)
         {
             if (ModelState.IsValid)
             {
@@ -39,11 +65,11 @@ namespace eUseControl.Web1.Controllers
                 else
                 {
                     ModelState.AddModelError("", userLogin.StatusMsg);
-                    return View();
+                    return View();//поменять
                 }
 
             }
-            return View();
+            return View();//поменять на редирект
         }
     }
 }
