@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eUseControl.Web1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,20 @@ namespace eUseControl.Web1.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            UserData u = new UserData();
+            u.UserName = "Customer";
+            u.Products = new List<string> { "Product #1", "Product #2", "Product #3", "Product #4" };
+            return View(u);
+
+        }
+
+        public ActionResult IndexAdmin()
+        {
+            UserData a = new UserData();
+            a.UserName = "Admin";
+            a.Products = new List<string> { "Product #1", "Product #2", "Product #3", "Product #4" };
+            return View(a);
+
         }
 
         public ActionResult policy()
