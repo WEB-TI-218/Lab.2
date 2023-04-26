@@ -325,6 +325,7 @@
     </Compile>
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -341,7 +342,6 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_LayoutNoHeader.cshtml" />
     <Content Include="Views\Home\policy.cshtml" />
-    <Content Include="Views\Home\registration.cshtml" />
     <Content Include="Views\Shared\_LayoutReg.cshtml" />
     <Content Include="Views\Shared\_Reg.cshtml" />
     <Content Include="Views\Home\otzivi.cshtml" />
@@ -353,6 +353,7 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_TopHeaderAdmin.cshtml" />
     <Content Include="Views\Login\SignIn.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

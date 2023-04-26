@@ -8,6 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using eUseControl.Web1.Models;
 using System.Web.UI.WebControls;
+using System.Data.Entity;
+using eUseControl.BusinessLogic.DBModel;
+using System.Web.Security;
+using Microsoft.Ajax.Utilities;
 
 namespace eUseControl.Web1.Controllers
 {
@@ -22,30 +26,47 @@ namespace eUseControl.Web1.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult SignIn()
         {
             return RedirectToAction("SignIn", "Login");
         }
 
-        [HttpGet]
-        public ActionResult SignIn()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(UserLogin model)
         {
-            UserData user = new UserData();
-            ULoginData data = new ULoginData
+            if (ModelState.IsValid)
             {
-                Credential = "Login123",
-                Password = "qwerty",
-                LoginIP = Request.UserHostAddress,
-                LoginDateTime = DateTime.Now
-            };
+                // поиск пользователя в бд
+                UDbTable user = null;
+                using (UserContext db = new UserContext())
+                {
+                    user = db.Users.FirstOrDefault(u => u.Email == model.Credential && u.Password == model.Password);
 
-            var userLogin = _session.UserLogin(data);
-            return View(user);
+                }
+                if (user != null)
+                {
+                    FormsAuthentication.SetAuthCookie(model.Credential, true);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
+                }
+            }
 
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
         }
 
         [HttpPost]
-        public ActionResult SignIn(UserLogin login)
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(UserRegister login)
         {
             if (ModelState.IsValid)
             {
@@ -53,6 +74,7 @@ namespace eUseControl.Web1.Controllers
                 {
                     Credential = login.Credential,
                     Password = login.Password,
+                    Email = login.Email,
                     LoginIP = Request.UserHostAddress,
                     LoginDateTime = DateTime.Now
                 };
@@ -60,16 +82,54 @@ namespace eUseControl.Web1.Controllers
                 var userLogin = _session.UserLogin(data);
                 if (userLogin.Status)
                 {
+                    //ADD COOKIE
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     ModelState.AddModelError("", userLogin.StatusMsg);
-                    return View();//поменять
+                    return View();
                 }
 
             }
-            return View();//поменять на редирект
+
+            return View();
+        }
+        public ActionResult Logoff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
+
+    //    [HttpPost]
+    //    public ActionResult SignIn(UserLogin login)
+    //    {
+    //        if (ModelState.IsValid)
+    //        {
+    //            ULoginData data = new ULoginData
+    //            {
+    //                Credential = login.Credential,
+    //                Password = login.Password,
+    //                LoginIP = Request.UserHostAddress,
+    //                LoginDateTime = DateTime.Now
+    //            };
+
+    //            var userLogin = _session.UserLogin(data);
+    //            if (userLogin.Status)
+    //            {
+    //                return RedirectToAction("Index", "Home");
+    //            }
+    //            else
+    //            {
+    //                ModelState.AddModelError("", userLogin.StatusMsg);
+    //                return View();//поменять
+    //            }
+
+    //        }
+    //        return View();//поменять на редирект
+    //    }
+    //}
+
 }
