@@ -28,12 +28,18 @@ namespace eUseControl.Web1.Controllers
         [HttpGet]
         public ActionResult SignIn()
         {
-            return RedirectToAction("SignIn", "Login");
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult LogIn()
+        {
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(UserLogin model)
+        public ActionResult LogIn(UserLogin model)
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +47,7 @@ namespace eUseControl.Web1.Controllers
                 UDbTable user = null;
                 using (UserContext db = new UserContext())
                 {
-                    user = db.Users.FirstOrDefault(u => u.Email == model.Credential && u.Password == model.Password);
+                    user = db.Users.FirstOrDefault(u => u.Username == model.Credential && u.Password == model.Password);
 
                 }
                 if (user != null)
