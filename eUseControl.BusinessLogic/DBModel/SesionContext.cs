@@ -8,13 +8,12 @@ using eUseControl.Domain.Entities.User;
 
 namespace eUseControl.BusinessLogic.DBModel
 {
-    class UserContext : DbContext
+    public class SessionContext : DbContext
     {
-        public UserContext() :
-            base("name=eUseControl") // connectionstring name define in your web.config
+        public SessionContext() : base("name=CCToolShop")
         {
         }
 
-        public virtual DbSet<UDbTable> Users { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
     }
 }

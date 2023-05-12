@@ -1,61 +1,144 @@
-﻿using eUseControl.BusinessLogic.DBModel;
-using eUseControl.Domain.Entities.Responces;
-using eUseControl.Domain.Entities.User;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
+using AutoMapper;
+using eUseControl.BusinessLogic.DBModel;
+using eUseControl.BusinessLogic.Interfaces;
+using eUseControl.Domain.Entities.User;
+using eUseControl.Helpers;
 
 namespace eUseControl.BusinessLogic.Core
 {
     public class UserApi
     {
-        public RequestResponceAction UserLoginAction(ULoginData data)
+        internal ULoginResp UserLoginAction(ULoginData data)
         {
-            UDbTable user;
-            using (var db = new UserContext())
+            UDbTable result;
+            var validate = new EmailAddressAttribute();
+            if (validate.IsValid(data.Credential))
             {
-                user = new UDbTable
+                var pass = LoginHelper.HashGen(data.Password);
+                using (var db = new UserContext())
                 {
-                    Username = data.Credential,
-                    Password = data.Password,
-                    LastLogin = DateTime.Now,
-                    Level = Domain.Entities.Enum.URole.USER,
-                    Email = data.Email
-                };
-                db.Users.Add(user);
-                db.SaveChanges();
+                    result = db.Users.FirstOrDefault(u => u.Email == data.Credential && u.Password == pass);
+                }
 
+                if (result == null)
+                {
+                    return new ULoginResp { Status = false, StatusMsg = "The Username or Password is Incorrect" };
+                }
+
+                using (var todo = new UserContext())
+                {
+                    result.LasIp = data.LoginIp;
+                    result.LastLogin = data.LoginDateTime;
+                    todo.Entry(result).State = EntityState.Modified;
+                    todo.SaveChanges();
+                }
+
+                return new ULoginResp { Status = true };
             }
-
-            using (var db = new UserContext())
+            else
             {
-                user = db.Users.FirstOrDefault(u => u.Username == data.Credential);
+                var pass = LoginHelper.HashGen(data.Password);
+                using (var db = new UserContext())
+                {
+                    result = db.Users.FirstOrDefault(u => u.Username == data.Credential && u.Password == pass);
+                }
+
+                if (result == null)
+                {
+                    return new ULoginResp { Status = false, StatusMsg = "The Username or Password is Incorrect" };
+                }
+
+                using (var todo = new UserContext())
+                {
+                    result.LasIp = data.LoginIp;
+                    result.LastLogin = data.LoginDateTime;
+                    todo.Entry(result).State = EntityState.Modified;
+                    todo.SaveChanges();
+                }
+
+                return new ULoginResp { Status = true };
             }
-
-            //if(user == null) 
-            //{
-            //    //throw new Exception();
-            //    using (UserContext db = new UserContext())
-            //    {
-            //        //db.Users.Add(new UDbTable { Username = user.Username,Email = user.Email, Password = user.Password });
-            //        //db.SaveChanges();
-
-            //        //user = db.Users.Where(u => u.Email == user.Username && u.Password == user.Password).FirstOrDefault();
-
-            //    }
-
-            //}
-
-            using (var db = new UserContext())
-            {
-                var users = db.Users.Where(u => u.Level == Domain.Entities.Enum.URole.ADMINISTRATOR).ToList();
-            }
-            return new RequestResponceAction();
         }
 
-    }
+        internal HttpCookie Cookie(string loginCredential)
+        {
+            var apiCookie = new HttpCookie("X-KEY")
+            {
+                Value = CookieGenerator.Create(loginCredential)
+            };
 
+            using (var db = new SessionContext())
+            {
+                Session curent;
+                var validate = new EmailAddressAttribute();
+                if (validate.IsValid(loginCredential))
+                {
+                    curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
+                }
+                else
+                {
+                    curent = (from e in db.Sessions where e.Username == loginCredential select e).FirstOrDefault();
+                }
+
+                if (curent != null)
+                {
+                    curent.CookieString = apiCookie.Value;
+                    curent.ExpireTime = DateTime.Now.AddMinutes(60);
+                    using (var todo = new SessionContext())
+                    {
+                        todo.Entry(curent).State = EntityState.Modified;
+                        todo.SaveChanges();
+                    }
+                }
+                else
+                {
+                    db.Sessions.Add(new Session
+                    {
+                        Username = loginCredential,
+                        CookieString = apiCookie.Value,
+                        ExpireTime = DateTime.Now.AddMinutes(60)
+                    });
+                    db.SaveChanges();
+                }
+            }
+
+            return apiCookie;
+        }
+
+        internal UserMinimal UserCookie(string cookie)
+        {
+            Session session;
+            UDbTable curentUser;
+
+            using (var db = new SessionContext())
+            {
+                session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
+            }
+
+            if (session == null) return null;
+            using (var db = new UserContext())
+            {
+                var validate = new EmailAddressAttribute();
+                if (validate.IsValid(session.Username))
+                {
+                    curentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
+                }
+                else
+                {
+                    curentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
+                }
+            }
+
+            if (curentUser == null) return null;
+            Mapper.Initialize(cfg => cfg.CreateMap<UDbTable, UserMinimal>());
+            var userminimal = Mapper.Map<UserMinimal>(curentUser);
+
+            return userminimal;
+        }
+    }
 }

@@ -1,11 +1,7 @@
-﻿using eUseControl.Domain.Entities.Enum;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using eUseControl.Domain.Enums;
 
 namespace eUseControl.Domain.Entities.User
 {
@@ -17,12 +13,12 @@ namespace eUseControl.Domain.Entities.User
 
         [Required]
         [Display(Name = "Username")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Username cannot be longer than 30 caracters.")]
+        [StringLength(30, MinimumLength = 5, ErrorMessage = "Username cannot be longer than 30 characters.")]
         public string Username { get; set; }
 
         [Required]
         [Display(Name = "Password")]
-        [StringLength(50, MinimumLength = 8, ErrorMessage = "Password cannot be shorter than 8 caracters.")]
+        [StringLength(50, MinimumLength = 8, ErrorMessage = "Password cannot be shorter than 8 characters.")]
         public string Password { get; set; }
 
         [Required]
@@ -37,6 +33,5 @@ namespace eUseControl.Domain.Entities.User
         public string LasIp { get; set; }
 
         public URole Level { get; set; }
-
     }
 }
