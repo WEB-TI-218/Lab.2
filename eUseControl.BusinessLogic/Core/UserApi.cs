@@ -4,6 +4,7 @@ using eUseControl.Domain.Entities.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,14 +19,15 @@ namespace eUseControl.BusinessLogic.Core
             {
                 user = new UDbTable
                 {
-                    Username = "Serghei123456",
-                    Password = "dow158ciewhsa",
+                    Username = data.Credential,
+                    Password = data.Password,
                     LastLogin = DateTime.Now,
-                    Level = Domain.Entities.Enum.URole.ADMINISTRATOR,
-                    Email = "info1@mail.ru"
-                };  
+                    Level = Domain.Entities.Enum.URole.USER,
+                    Email = data.Email
+                };
                 db.Users.Add(user);
                 db.SaveChanges();
+
             }
 
             using (var db = new UserContext())
@@ -33,18 +35,27 @@ namespace eUseControl.BusinessLogic.Core
                 user = db.Users.FirstOrDefault(u => u.Username == data.Credential);
             }
 
-            if(user == null) 
-            {
-                throw new Exception();
-            }
+            //if(user == null) 
+            //{
+            //    //throw new Exception();
+            //    using (UserContext db = new UserContext())
+            //    {
+            //        //db.Users.Add(new UDbTable { Username = user.Username,Email = user.Email, Password = user.Password });
+            //        //db.SaveChanges();
+
+            //        //user = db.Users.Where(u => u.Email == user.Username && u.Password == user.Password).FirstOrDefault();
+
+            //    }
+
+            //}
 
             using (var db = new UserContext())
             {
-               var users = db.Users.Where(u => u.Level == Domain.Entities.Enum.URole.ADMINISTRATOR).ToList();
+                var users = db.Users.Where(u => u.Level == Domain.Entities.Enum.URole.ADMINISTRATOR).ToList();
             }
             return new RequestResponceAction();
         }
 
     }
-   
+
 }

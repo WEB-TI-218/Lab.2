@@ -32,10 +32,6 @@ namespace eUseControl.Web1.Controllers
         {
             return View();
         }
-        public ActionResult registration()
-        {
-            return View();
-        }
 
         public ActionResult accessories()
         {
@@ -66,7 +62,7 @@ namespace eUseControl.Web1.Controllers
         {
             return View();
         }
-       
+
         public ActionResult product3()
         {
             return View();

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "SignIn";
+    ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_LayoutReg.cshtml";
 
 }
@@ -7,7 +7,7 @@
 @using System.Web.Optimization
 @model eUseControl.Web1.Models.UserRegister
 
-@using (Html.BeginForm("SignIn", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+@using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @id = "LoginForm" }))
 {
     @Html.AntiForgeryToken()
     <div class="login-form">
@@ -29,9 +29,12 @@
                 })
             </div>
 
-
             <div class="group">
-                <input type="submit" class="button" value="Login">
+                <label for="pass" class="label">Email адрес</label>
+                @Html.TextBoxFor(m => m.Email)
+            </div>
+            <div class="group">
+                <input type="submit" class="button" value="Зарегистрироваться">
             </div>
             <div class="hr"></div>
 

@@ -324,6 +324,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -352,7 +353,9 @@
     <Content Include="Views\Home\Store.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_TopHeaderAdmin.cshtml" />
+    <Content Include="Views\Login\LogIn.cshtml" />
     <Content Include="Views\Login\SignIn.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
