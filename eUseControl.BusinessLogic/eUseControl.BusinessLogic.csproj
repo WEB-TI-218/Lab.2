@@ -71,7 +71,11 @@
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DBModel\SesionContext.cs" />
     <Compile Include="DBModel\UserContext.cs" />
+    <Compile Include="Interfaces\IAllCars.cs" />
+    <Compile Include="Interfaces\ICarsCategory.cs" />
     <Compile Include="Interfaces\ISession.cs" />
+    <Compile Include="mocks\MockCars.cs" />
+    <Compile Include="mocks\MockCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionBL.cs" />
   </ItemGroup>
