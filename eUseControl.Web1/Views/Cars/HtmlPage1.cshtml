@@ -1,0 +1,30 @@
+﻿
+@model eUseControl.Web1.ViewsModels.CarsListViewModel
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta name="viewport" content="wiah=device-widh"/>
+    <title>List</title>
+</head>
+<body>
+    <h2> Авто</h2>
+    <h3>Model.currCategory</h3>
+
+    @{ 
+        foreach(var car in Model.allCars)
+            {
+             <div>
+                 <h2> Модель: @car.name </h2>
+                 <p>Цена: @car.price.ToString </p>
+             </div>
+            }
+    }
+
+
+</body>
+</html>

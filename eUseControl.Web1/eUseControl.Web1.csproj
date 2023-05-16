@@ -307,6 +307,7 @@
     <Content Include="Scripts\jquery-ui-1.13.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <None Include="Views\Cars\HtmlPage1.cshtml" />
     <Content Include="Views\Home\checkout.cshtml" />
     <None Include="Views\Home\accessories.cshtml" />
     <Content Include="Views\Home\HotProduct.cshtml" />
@@ -317,6 +318,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -324,12 +326,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="mocks\MockCars.cs" />
+    <Compile Include="mocks\MockCategory.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewsModels\CarsListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -383,7 +388,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eUseControl.BusinessLogic\eUseControl.BusinessLogic.csproj">
