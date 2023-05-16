@@ -53,7 +53,7 @@ namespace eUseControl.Web1.Controllers
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.Credential, true);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("IndexAuth", "Home");
                 }
                 else
                 {
@@ -85,11 +85,12 @@ namespace eUseControl.Web1.Controllers
                     LoginDateTime = DateTime.Now
                 };
 
-                var userLogin = _session.UserLogin(data);
+                var userLogin = _session.UserRegistration(data);
                 if (userLogin.Status)
                 {
                     //ADD COOKIE
-
+                    HttpCookie cookie = _session.GenCookie(login.Credential);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                     return RedirectToAction("Index", "Home");
                 }
                 else

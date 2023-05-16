@@ -1,15 +1,21 @@
-﻿using eUseControl.Web1.Models;
+﻿using eUseControl.Web1.Attributes;
+using eUseControl.Web1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using eUseControl.BusinessLogic;
+using eUseControl.Domain;
+
 
 namespace eUseControl.Web1.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Home
+        
         public ActionResult Index()
         {
             UserData u = new UserData();
@@ -23,6 +29,15 @@ namespace eUseControl.Web1.Controllers
         {
             UserData a = new UserData();
             a.UserName = "Admin";
+            a.Products = new List<string> { "Product #1", "Product #2", "Product #3", "Product #4" };
+            return View(a);
+
+        }
+
+        public ActionResult IndexAuth()
+        {
+            UserData a = new UserData();
+            a.UserName = "Customer";
             a.Products = new List<string> { "Product #1", "Product #2", "Product #3", "Product #4" };
             return View(a);
 

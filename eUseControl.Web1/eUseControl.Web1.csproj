@@ -62,6 +62,22 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -311,19 +327,27 @@
     <None Include="Views\Home\accessories.cshtml" />
     <Content Include="Views\Home\HotProduct.cshtml" />
     <Content Include="Views\Home\IndexAdmin.cshtml" />
+    <Content Include="Views\Home\IndexAuth.cshtml" />
+    <Content Include="Views\Error\Error404.cshtml" />
     <None Include="Views\Home\product4.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\AdminModAttribute.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminProduct.cs" />
     <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\UserFeedb.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -344,7 +368,7 @@
     <Content Include="Views\Home\policy.cshtml" />
     <Content Include="Views\Shared\_LayoutReg.cshtml" />
     <Content Include="Views\Shared\_Reg.cshtml" />
-    <Content Include="Views\Home\otzivi.cshtml" />
+    <Content Include="Views\Product\otzivi.cshtml" />
     <Content Include="Views\Home\predproduct.cshtml" />
     <Content Include="Views\Home\product1.cshtml" />
     <Content Include="Views\Home\product2.cshtml" />
@@ -355,6 +379,9 @@
     <Content Include="Views\Login\SignIn.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Login\LogIn.cshtml" />
+    <Content Include="Views\Shared\_HeaderAuth.cshtml" />
+    <Content Include="Views\Shared\_LayoutAuth.cshtml" />
+    <Content Include="Views\Product\AddProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -379,7 +406,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Product\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eUseControl.BusinessLogic\eUseControl.BusinessLogic.csproj">
