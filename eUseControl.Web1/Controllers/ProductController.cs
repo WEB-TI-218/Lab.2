@@ -86,7 +86,7 @@ namespace eUseControl.Web1.Controllers
 
                 pr = new FDbTable
                 {
-                    Id = feedback.Id,
+                    //Id = feedback.Id,
                     Text = feedback.Text,
                 };
 

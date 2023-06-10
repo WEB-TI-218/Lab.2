@@ -13,13 +13,13 @@ namespace eUseControl.Domain.Entities.User
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        //public int Id { get; set; }
         //[Required]
         //[Display(Name = "Email Address")]
         //[StringLength(30)]
         //public string Email { get; set; }
 
-        //[Required]
+        [Required]
         [Display(Name = "Text")]
         [StringLength(500)]
         public string Text { get; set; }
